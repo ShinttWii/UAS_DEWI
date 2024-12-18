@@ -5,9 +5,9 @@ $nama = $_POST['nama'];
 $nim = $_POST['nim'];
 $email = $_POST['email'];
 $nomor = $_POST['nomor'];
-$jurusan = $_POST['jurusan'];
+$jurusan_id = $_POST['jurusan_id'];
 
-$sql = "INSERT INTO mahasiswa (nama, nim, email, nomor, jurusan) VALUES ('$nama', '$nim', '$email', '$nomor', '$jurusan')";
+$sql = "INSERT INTO mahasiswa (nama, nim, email, nomor, jurusan_id) VALUES ('$nama', '$nim', '$email', '$nomor', '$jurusan_id')";
 
 if ($conn->query($sql) === TRUE) {
     header("Location: index.php");

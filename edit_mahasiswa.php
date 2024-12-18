@@ -1,8 +1,8 @@
 <?php
-include 'koneksi_php';
+include 'koneksi.php';
 $id = $_GET['id'];
 $sql = "SELECT * FROM mahasiswa WHERE id=$id";
-$result = $conn->query(&sql);
+$result = $conn->query($sql);
 $data = $result->fetch_assoc();
 ?>
 
@@ -22,7 +22,13 @@ $data = $result->fetch_assoc();
         NIM: <input type="text" name="nim" value="<?php echo $data['nim']; ?>"><br>
         Email: <input type="email" name="email" value="<?php echo $data['email']; ?>"><br>
         Nomor: <input type="text" name="nomor" value="<?php echo $data['nomor']; ?>"><br>
-        Jurusan: <input type="text" name="jurusan" value="<?php echo $data['jurusan']; ?>"><br>
+        Jurusan:  
+         <select name ="jurusan_id">
+            <option value="1">KDG</option>
+            <option value="2">ADM</option>
+            <option value="3">ITK</option>
+        </select>
+        
         <input type="submit" value="Simpan">
     </form>
 </body>

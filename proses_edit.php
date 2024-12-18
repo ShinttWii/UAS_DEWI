@@ -5,9 +5,9 @@ $nama = $_POST['nama'];
 $nim = $_POST['nim'];
 $email = $_POST['email'];
 $nomor = $_POST['nomor'];
-$jurusan = $_POST['jurusan'];
+$jurusan_id = $_POST['jurusan_id'];
 
-$sql = "UPDATE mahasiswa SET nama='$nama', nim='$nim', email='$email', nomor='$nomor', jurusan='$jurusan' WHERE id=$id";
+$sql = "UPDATE mahasiswa SET nama='$nama', nim='$nim', email='$email', nomor='$nomor', jurusan_id='$jurusan_id' WHERE id=$id";
 
 if ($conn->query($sql)=== TRUE) {
     header("Location: index.php");

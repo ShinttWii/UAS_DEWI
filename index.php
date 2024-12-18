@@ -1,21 +1,30 @@
 <?php
 include 'koneksi.php';
 
-$sql = "SELECT * FROM mahasiswa";
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('Location: login.php');
+    exit;
+}
+
+$sql = "SELECT * FROM mahasiswa INNER JOIN jurusan ON mahasiswa.jurusan_id = jurusan.id";
 $result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Data Mahasiswa</title>
+    <head>
+        <meta charset="UTF-8">
+        <title>Data Mahasiswa</title>
+        <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <h2>Data Mahasiswa</h2>
     <a href="tambah_mahasiswa.php">Tambah Data</a>
+    <a href="logout.php">Logout</a>
     <table border="1">
         <tr>
             <th>ID</th>
@@ -34,7 +43,7 @@ $result = $conn->query($sql);
             <td><?php echo $row['nim']; ?></td>
             <td><?php echo $row['email']; ?></td>
             <td><?php echo $row['nomor']; ?></td>
-            <td><?php echo $row['jurusan']; ?></td>
+            <td><?php echo $row['nama_jurusan']; ?></td>
             <td>
                 <a href="edit_mahasiswa.php?id=<?php echo $row['id']; ?>">Edit</a> |
                 <a href="hapus_mahasiswa.php?id=<?php echo $row['id']; ?>">Hapus</a>

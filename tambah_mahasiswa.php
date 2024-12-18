@@ -21,8 +21,14 @@
         <label>Nomor:</label>
         <input type="text" name="nomor" required><br>
 
-        <label>Jurusan:</label>
-        <input type="text" name="jurusan" required><br>
+        <label>Jurusan_id:</label>
+        <!-- <input type="text" name="jurusan_id" required><br> -->
+
+        <select name ="jurusan_id">
+            <option value="1">KDG</option>
+            <option value="2">ADM</option>
+            <option value="3">ITK</option>
+        </select>
 
         <input type="submit" value="Tambah">
     </form>
