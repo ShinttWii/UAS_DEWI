@@ -1,5 +1,11 @@
 <?php
 include 'koneksi.php';
+
+if(!isset($_SESSION['username'])|| $_SESSION['role'] === 'admin') {
+    header('Location: index.php');
+    exit;
+}
+
 $id = $_GET['id'];
 $sql = "SELECT * FROM mahasiswa WHERE id=$id";
 $result = $conn->query($sql);

@@ -1,5 +1,11 @@
 <?php
 include 'koneksi.php';
+
+if(!isset($_SESSION['username'])|| $_SESSION['role'] === 'admin') {
+    header('Location: index.php');
+    exit;
+}
+
 $id = $_GET['id'];
 
 $sql = "DELETE FROM mahasiswa WHERE id=$id";

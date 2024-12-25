@@ -1,3 +1,15 @@
+<?php
+include 'koneksi.php';
+
+if(!isset($_SESSION['username'])|| $_SESSION['role'] === 'admin') {
+    header('Location: index.php');
+    exit;
+}
+
+$sql = "SELECT * FROM jurusan";
+$result = $conn->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 

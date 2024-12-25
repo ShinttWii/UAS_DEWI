@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2024 at 09:14 AM
+-- Generation Time: Dec 25, 2024 at 08:29 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `jurusan` (
-  `id` int(11) NOT NULL,
+  `jurusan_id` int(11) NOT NULL,
   `nama_jurusan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -36,7 +36,7 @@ CREATE TABLE `jurusan` (
 -- Dumping data for table `jurusan`
 --
 
-INSERT INTO `jurusan` (`id`, `nama_jurusan`) VALUES
+INSERT INTO `jurusan` (`jurusan_id`, `nama_jurusan`) VALUES
 (1, 'KDG'),
 (2, 'ADM'),
 (3, 'ITK');
@@ -61,8 +61,28 @@ CREATE TABLE `mahasiswa` (
 --
 
 INSERT INTO `mahasiswa` (`id`, `nama`, `nim`, `email`, `nomor`, `jurusan_id`) VALUES
-(2, 'DEWI', '2411070021', 'DEWISHINTA2828@GMAIL.COM', '083811846573', 3),
-(3, 'dewi', '2411070021', 'dewishinta2828@gmail.com', '083811846573', 2);
+(5, 'dewi shinta', '2411070021', 'dewishinta0128@gmail.com', '083811846573', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(100) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('admin','user') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
+(1, 'admin', 'admin123', 'admin'),
+(2, 'user1', 'admin123', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -72,12 +92,18 @@ INSERT INTO `mahasiswa` (`id`, `nama`, `nim`, `email`, `nomor`, `jurusan_id`) VA
 -- Indexes for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`jurusan_id`);
 
 --
 -- Indexes for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -88,13 +114,19 @@ ALTER TABLE `mahasiswa`
 -- AUTO_INCREMENT for table `jurusan`
 --
 ALTER TABLE `jurusan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `jurusan_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

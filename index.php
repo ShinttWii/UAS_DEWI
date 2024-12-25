@@ -8,7 +8,9 @@ if (!isset($_SESSION['username'])) {
     exit;
 }
 
-$sql = "SELECT * FROM mahasiswa INNER JOIN jurusan ON mahasiswa.jurusan_id = jurusan.id";
+$role = $_SESSION['role'];
+
+$sql = "SELECT * FROM mahasiswa INNER JOIN jurusan ON mahasiswa.jurusan_id = jurusan.jurusan_id";
 $result = $conn->query($sql);
 ?>
 
@@ -23,7 +25,10 @@ $result = $conn->query($sql);
 
 <body>
     <h2>Data Mahasiswa</h2>
-    <a href="tambah_mahasiswa.php">Tambah Data</a>
+    <?php if ($role === 'admin') : ?>
+        <a href="tambah_mahasiswa.php">Tambah Data</a>
+    <?php endif; ?>
+
     <a href="logout.php">Logout</a>
     <table border="1">
         <tr>
@@ -45,8 +50,11 @@ $result = $conn->query($sql);
             <td><?php echo $row['nomor']; ?></td>
             <td><?php echo $row['nama_jurusan']; ?></td>
             <td>
-                <a href="edit_mahasiswa.php?id=<?php echo $row['id']; ?>">Edit</a> |
-                <a href="hapus_mahasiswa.php?id=<?php echo $row['id']; ?>">Hapus</a>
+                <?php if ($role === 'admin') : ?>
+                    <a href="edit_mahasiswa.php?id=<?php echo $row['id']; ?>">Edit</a> |
+                    <a href="hapus_mahasiswa.php?id=<?php echo $row['id']; ?>">Hapus</a>
+                <?php endif; ?>
+
             </td>
         </tr>
 <?php } ?>
